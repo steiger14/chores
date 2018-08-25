@@ -19,6 +19,7 @@ defmodule SteigerWeb.Router do
     get "/", PageController, :index
 
     resources "/schools", SchoolController
+    resources "/chores", ChoreController
   end
 
   # Other scopes may use custom stacks.
