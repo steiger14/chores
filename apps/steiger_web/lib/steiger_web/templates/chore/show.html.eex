@@ -1,0 +1,18 @@
+<h2>Show Chore</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @chore.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @chore.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: chore_path(@conn, :edit, @chore) %></span>
+<span><%= link "Back", to: chore_path(@conn, :index) %></span>

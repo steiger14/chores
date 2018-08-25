@@ -1,0 +1,5 @@
+<h2>Edit Chore</h2>
+
+<%= render "form.html", Map.put(assigns, :action, chore_path(@conn, :update, @chore)) %>
+
+<span><%= link "Back", to: chore_path(@conn, :index) %></span>
