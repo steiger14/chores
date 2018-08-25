@@ -1,0 +1,18 @@
+<h2>Show School</h2>
+
+<ul>
+
+  <li>
+    <strong>Year:</strong>
+    <%= @school.year %>
+  </li>
+
+  <li>
+    <strong>Season:</strong>
+    <%= @school.season %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: school_path(@conn, :edit, @school) %></span>
+<span><%= link "Back", to: school_path(@conn, :index) %></span>
