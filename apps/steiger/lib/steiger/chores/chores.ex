@@ -7,6 +7,8 @@ defmodule Steiger.Chores do
   alias Steiger.Repo
 
   alias Steiger.Chores.School
+  alias Steiger.Chores.Chore
+  alias Steiger.Chores.SchoolChore
 
   @doc """
   Returns the list of schools.
@@ -53,6 +55,22 @@ defmodule Steiger.Chores do
     %School{}
     |> School.changeset(attrs)
     |> Repo.insert()
+    |> case do
+      {:ok, school} ->
+        Enum.each(list_chores(), fn(%Chore{id: chore_id}) ->
+           %SchoolChore{}
+           |> SchoolChore.changeset(%{school_id: school.id, chore_id: chore_id, quantity: 0})
+           |> Repo.insert!()
+        end)
+
+
+
+
+        {:ok, school}
+
+      {:error, changeset} ->
+        {:error, changeset}
+    end
   end
 
   @doc """
@@ -101,8 +119,6 @@ defmodule Steiger.Chores do
   def change_school(%School{} = school) do
     School.changeset(school, %{})
   end
-
-  alias Steiger.Chores.Chore
 
   @doc """
   Returns the list of chores.
